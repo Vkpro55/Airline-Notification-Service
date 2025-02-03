@@ -1,5 +1,4 @@
 const nodemailer = require("nodemailer");
-
 const { GMAIL_EMAIL, GMAIL_PASS } = require("./server-config");
 
 const mailSender = nodemailer.createTransport({
@@ -10,4 +9,4 @@ const mailSender = nodemailer.createTransport({
     }
 });
 
-module.exports = { mailSender };
+module.exports = { mailSender }; 

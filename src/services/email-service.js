@@ -1,24 +1,24 @@
-
 const { TicketRepository } = require("../repositories");
 const { EmailConfig } = require("../config");
 
 const ticketRepo = new TicketRepository();
 
-async function sendEmail(mailFrom, mailTo, mailSubject, mailText) {
+async function sendEmail({ mailFrom, mailTo, mailSubject, mailText }) {
     try {
-        const response = EmailConfig.mailSender.sendMail({
+        const response = await EmailConfig.mailSender.sendMail({
             from: mailFrom,
             to: mailTo,
             subject: mailSubject,
             text: mailText
-        })
+        });
 
         return response;
     } catch (error) {
-        console.log(error);
+        console.error("Error sending email:", error);
         throw error;
     }
 }
+
 
 async function createTicket(data) {
     try {
